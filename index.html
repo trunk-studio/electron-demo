@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using node <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+    <video id="camFeed" width="320" height="240" autoplay>
+    </video>
+  </body>
+
+  <script>
+    const os = require('os');
+    console.log('=== os.networkInterfaces() ===', os.networkInterfaces());
+    console.log('=== os.cpus() ===', os.cpus());
+    console.log('=== os.platform() ===', os.platform());
+    console.log('=== os.release() ===', os.release());
+    console.log('=== os.totalmem() ===', os.totalmem());
+    console.log('=== os.type() ===', os.type());
+    navigator.webkitGetUserMedia(
+      {audio: true, video: true},
+      function(stream) {
+        console.log('success', arguments)
+        document.getElementById('camFeed').src = webkitURL.createObjectURL(stream);
+      },
+      function() {
+        console.log('error', arguments)
+      }
+    )
+
+
+
+  </script>
+
+
+</html>
