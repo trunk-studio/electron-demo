@@ -6,6 +6,8 @@ const os = require('os');
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
+const exec = require('child_process').exec;
+
 
 var http = require('http')
 var port = 8888,
@@ -30,6 +32,14 @@ function createWindow () {
 
   server.listen(port, host);
   console.log('=== server start ===');
+
+  // var cmd = 'open -n ./TeamViewerQS.app --args -AppCommandLineArg';
+  var cmd = 'open -n ../Resources/app/TeamViewerQS.app --args -AppCommandLineArg';
+
+  exec(cmd, function(error, stdout, stderr) {
+    console.log(error, stdout, stderr);
+  });
+
 
   mainWindow = new BrowserWindow({width: 800, height: 600});
 
@@ -69,4 +79,8 @@ app.on('activate', function () {
   if (mainWindow === null) {
     createWindow();
   }
+
+
+
+
 });
