@@ -1,12 +1,15 @@
 'use strict';
 
 const electron = require('electron');
+const ipcMain = require('electron').ipcMain;
 const os = require('os');
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 const exec = require('child_process').exec;
+
+
 
 
 var http = require('http')
@@ -17,31 +20,47 @@ var port = 8888,
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+const ipcMain = require('electron').ipcMain;
+const exec = require('child_process').exec;
+ipcMain.on('start teamViewer', function(event, arg) {
 
-function createWindow () {
-  // Create the browser window.
-  // you can use any webserver library/framework you like (connect, express, hapi, etc)
-  var server = http.createServer(function(req, res) {
-    // You can respond with a status `500` if you want to indicate that something went wrong
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    // data passed to `electronWorkers.execute` will be available in req body
-    res.end('Hello New York\n');
-    console.log(req);
-    req.pipe(res);
-  });
+  // console.log('__dirname', __dirname);
+  // var cmd = 'open -n '+__dirname+'/../app/TeamViewerQS.app --args -AppCommandLineArg';
+  //
+  // exec(cmd, function(error, stdout, stderr) {
+  //   console.log(error, stdout, stderr);
+  // });
 
-  server.listen(port, host);
-  console.log('=== server start ===');
-
-  // var cmd = 'open -n ./TeamViewerQS.app --args -AppCommandLineArg';
-  var cmd = 'open -n ../Resources/app/TeamViewerQS.app --args -AppCommandLineArg';
+  var cmd = 'open -n '+__dirname+'/TeamViewerQS.app --args -AppCommandLineArg';
 
   exec(cmd, function(error, stdout, stderr) {
     console.log(error, stdout, stderr);
   });
 
+  event.returnValue = 'success';
+  return;
+});
 
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+function createWindow () {
+  // Create the browser window.
+  // you can use any webserver library/framework you like (connect, express, hapi, etc)
+  // var server = http.createServer(function(req, res) {
+  //   // You can respond with a status `500` if you want to indicate that something went wrong
+  //   res.writeHead(200, {'Content-Type': 'application/json'});
+  //   // data passed to `electronWorkers.execute` will be available in req body
+  //   res.end('Hello New York\n');
+  //   console.log(req);
+  //   req.pipe(res);
+  // });
+  //
+  // server.listen(port, host);
+  // console.log('=== server start ===');
+
+  // var cmd = 'open -n ./TeamViewerQS.app --args -AppCommandLineArg';
+
+
+
+  mainWindow = new BrowserWindow({width: 1200, height: 768});
 
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
