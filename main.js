@@ -1,27 +1,21 @@
 'use strict';
 
 const electron = require('electron');
-const ipcMain = require('electron').ipcMain;
 const os = require('os');
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
-const exec = require('child_process').exec;
-
-
-
 
 var http = require('http')
 var port = 8888,
     host = 'localhost'
 
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-const ipcMain = require('electron').ipcMain;
 const exec = require('child_process').exec;
+const ipcMain = require('electron').ipcMain;
 ipcMain.on('start teamViewer', function(event, arg) {
 
   // console.log('__dirname', __dirname);
