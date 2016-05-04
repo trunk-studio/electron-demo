@@ -25,7 +25,10 @@ ipcMain.on('start teamViewer', function(event, arg) {
   //   console.log(error, stdout, stderr);
   // });
 
-  var cmd = 'open -n '+__dirname+'/TeamViewerQS.app --args -AppCommandLineArg';
+  // windows
+  // var cmd = __dirname+'//assets//windows//TeamViewerQS.exe --args -AppCommandLineArg';
+  // osx
+  var cmd = 'open -n '+__dirname+'/assets/osx/TeamViewerQS.app --args -AppCommandLineArg';
 
   exec(cmd, function(error, stdout, stderr) {
     console.log(error, stdout, stderr);
