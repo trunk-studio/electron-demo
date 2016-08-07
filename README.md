@@ -78,7 +78,7 @@ npm run build
 
 
 ```
-可以將相關資料夾內得檔案複製到對應的執行平台，點選 `electron-quick-start` 啟動打包好的程式，如此就可以快速完成應用程式發布。
+將相關資料夾內得檔案複製到對應的執行平台，點選 `electron-quick-start` 啟動打包好的程式，如此就可以快速完成應用程式發布。
 
 此練習為的執行環境為 ubuntu 64 bit，可以進入
 
@@ -102,14 +102,19 @@ npm run build
 
 ## 其他使用 Election 製作的 App
 
-* [atom 編輯器](https://atom.io/)
+* [Atom 編輯器](https://atom.io/)
 
   Electron 為 GitHub 為了開發 Atom 編輯器所開發出來的。
 
 * [Nylas N1](https://nylas.com/)
 
-  Email 管理軟體
+  Email 管理軟體。
 
 * [Kitematic](https://kitematic.com/)
 
-  Docker 管理工具
+  Docker 管理工具。
+
+
+* [Slack](https://slack.com/)
+
+  團隊通訊溝通軟體。
