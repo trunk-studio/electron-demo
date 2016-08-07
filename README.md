@@ -1,4 +1,4 @@
-# 15 分鐘 electron 初體驗
+# Modern Web 2016: 15 分鐘 electron 初體驗
 
 Electron 可以讓你使用純 JavaScript 使用豐富的原生 APIs 來創造桌面應用。你可以把它看作是用於 Desktop App 的 Node.js 的一個變體。這並不代表 Electron 是有自己 GUI 元件的 JavaScript。Electron 使用 Web 技術作為它的 GUI 的實作，所以你能把它看作成一個被 JavaScript 控制的精簡版的 Chromium 瀏覽器。
 
@@ -62,9 +62,54 @@ function getFileSystemResilt(){
 npm run build
 ```
 
-可以打包成各種平台對應的安裝檔，此練習使用的是 Ubuntu 所以我們可以開啟下列路徑之檔案
+可以打包成各種平台對應的安裝檔，如下：
+
+```
+# Linux
+/home/user/workspace/electron-demo/electron-quick-start-linux-ia32
+/home/user/workspace/electron-demo/electron-quick-start-linux-x64
+
+# Windows
+/home/user/workspace/electron-demo/electron-quick-start-win32-ia32
+/home/user/workspace/electron-demo/electron-quick-start-win32-x64
+
+# Mac OS X
+/home/user/workspace/electron-demo/electron-quick-start-darwin-x64
 
 
-npm install -g electron-prebuilt@1.1.1
+```
+可以將相關資料夾內得檔案複製到對應的執行平台，點選 `electron-quick-start` 啟動打包好的程式，如此就可以快速完成應用程式發布。
 
-electron file-explorer/
+此練習為的執行環境為 ubuntu 64 bit，可以進入
+
+`/home/user/workspace/electron-demo/electron-quick-start-linux-x64`
+
+啟動應用程式，執行畫面如下：
+
+![](assets/README-39473.png)
+
+## 執行 file file-explorer
+
+在此專案根目錄執行：
+
+`electron file-explorer/`
+
+畫面如下：
+
+![](assets/README-f1ddd.png)
+
+除了基本的操作，也可以使用 Electron 建立如同 file explorer 的功能
+
+## 其他使用 Election 製作的 App
+
+* [atom 編輯器][https://atom.io/]
+
+Electron 為 GitHub 為了開發 Atom 編輯器所開發出來的。
+
+* [Nylas N1](https://nylas.com/)
+
+Email 管理軟體
+
+* [Kitematic](https://kitematic.com/)
+
+Docker 管理工具
