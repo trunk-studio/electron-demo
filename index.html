@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>TrunkStudio System Check P.O.C</title>
+    <title>System Check</title>
     <script src="https://code.jquery.com/jquery.min.js"></script>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -13,139 +13,84 @@
   </head>
   <script>
     const os = require('os');
-    console.log('=== os.networkInterfaces() ===', os.networkInterfaces());
-
-    console.log('=== os.cpus() ===', os.cpus());
-    console.log('=== os.platform() ===', os.platform());
-    console.log('=== os.release() ===', os.release());
-    console.log('=== os.totalmem() ===', os.totalmem());
-    console.log('=== os.type() ===', os.type());
-    navigator.webkitGetUserMedia(
-      {audio: true, video: true},
-      function(stream) {
-        console.log('success', arguments)
-        document.getElementById('camFeed').src = webkitURL.createObjectURL(stream);
-      },
-      function() {
-        console.log('error', arguments)
-      }
-    )
-
+    var network = JSON.stringify(os.networkInterfaces().en0, null, 2);
+    var cpu = JSON.stringify(os.cpus()[0], null, 2);
+    var platform = os.platform();
+    var totalmem = (os.totalmem()/1024/1024/1024) + " GB";
+    var type = os.type();
 
     const ipcRenderer = require('electron').ipcRenderer;
 
-    function callTeamview(){
-      console.log('=== call teamview ===');
-      ipcRenderer.sendSync('start teamViewer')
+    function getFileSystemResilt(){
+      var result = ipcRenderer.sendSync('get ls result');
+      result = result.split(' ').join("<br>")
+      document.getElementById("result").innerHTML = result;
       return;
     }
 
-
-
   </script>
-
-
-
 
   <body>
     <div class="container">
 
-      <!-- The justified navigation menu is meant for single line per list item.
-           Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
         <h3 class="text-muted"></h3>
         <nav>
           <ul class="nav nav-justified">
-            <li class="active"><a href="#">TrunkStudio System Check POC</a></li>
+            <li class="active"><a href="#">System Check</a></li>
           </ul>
         </nav>
       </div>
 
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h1>System Check</h1>
-        <p class="lead">Webcam Preview</p>
-        <p><video id="camFeed" autoplay></video></p>
 
-        <p><a class="btn btn-lg btn-success" onclick="callTeamview();" href="#" role="button">call teamViewer</a></p>
-      </div>
 
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-lg-4">
           <h2>Network Info</h2>
           <p>
-            <br>Hardware Port: Wi-Fi
-            <br>Device: en0
-            <br>Ethernet Address: a0:99:9b:08:9d:a3
-            <br>
-            <br>Hardware Port: Bluetooth PAN
-            <br>Device: en3
-            <br>Ethernet Address: a4:5e:60:ef:d9:74
-            <br>
-            <br>Hardware Port: Thunderbolt 1
-            <br>Device: en1
-            <br>Ethernet Address: 6a:00:00:a9:a4:20
-            <br>
-            <br>Hardware Port: Thunderbolt 2
-            <br>Device: en2
-            <br>Ethernet Address: 6a:00:00:a9:a4:21
-            <br>
-            <br>Hardware Port: Thunderbolt Bridge
-            <br>Device: bridge0
-            <br>Ethernet Address: a2:99:9b:80:7a:00
-            <br>
-            <br>VLAN Configurations
-            <br>===================
+            <pre>
+              <code>
+                <script>document.write(network)</script>
+              </code>
+            </pre>
           </p>
 
         </div>
         <div class="col-lg-4">
           <h2>CPU</h2>
-          <p>Intel(R) Core(TM) i7-4870HQ CPU @ 2.50GHz</p>
-        </div>
-
-        <div class="col-lg-4">
-          <h2>OS Info</h2>
           <p>
-            <br />System Software Overview:
-            <br />
-            <br />  System Version: OS X 10.11.4 (15E65)
-            <br />  Kernel Version: Darwin 15.4.0
-            <br />  Boot Volume: Macintosh HD
-            <br />  Boot Mode: Normal
-            <br />  Computer Name: 謝宗穎’s MacBook Pro
-            <br />  User Name: 謝宗穎 (spooky)
-            <br />  Secure Virtual Memory: Enabled
-            <br />  System Integrity Protection: Enabled
-            <br />  Time since boot: 1 day 2:35
-
+            <pre>
+              <code>
+                <script>document.write(cpu)</script>
+              </code>
+            </pre>
           </p>
         </div>
 
-        <div class="col-lg-4">
-          <h2>Browser Installed</h2>
-          <p>Google Chrome 49.0.2623.112</p>
-          <p>Safari 9.1</p>
-
-        </div>
 
         <div class="col-lg-4">
           <h2>Other Info</h2>
           <p>We are using node <script>document.write(process.versions.node)</script></p>
           <p>Chromium <script>document.write(process.versions.chrome)</script></p>
           <p>and Electron <script>document.write(process.versions.electron)</script></p>
+          <p>Memory is <script>document.write(totalmem)</script></p>
 
         </div>
 
-
-
-
-
-
-
       </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>list file</h2>
+          <pre>
+            <code id="result">
 
+            </code>
+          </pre>
+
+          <p><a class="btn btn-lg btn-success" onclick="getFileSystemResilt();" href="#" role="button">call teamViewer</a></p>
+        </div>
+      </div>
       <!-- Site footer -->
       <footer class="footer">
         <p>&copy; 2016 Trunk-Studio Company, Inc.</p>

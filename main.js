@@ -7,35 +7,17 @@ const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
-var http = require('http')
-var port = 8888,
-    host = 'localhost'
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 const exec = require('child_process').exec;
 const ipcMain = require('electron').ipcMain;
-ipcMain.on('start teamViewer', function(event, arg) {
-
-  // console.log('__dirname', __dirname);
-  // var cmd = 'open -n '+__dirname+'/../app/TeamViewerQS.app --args -AppCommandLineArg';
-  //
-  // exec(cmd, function(error, stdout, stderr) {
-  //   console.log(error, stdout, stderr);
-  // });
-
-  // windows
-  // var cmd = __dirname+'//assets//windows//TeamViewerQS.exe --args -AppCommandLineArg';
-  // osx
-  var cmd = 'open -n '+__dirname+'/assets/osx/TeamViewerQS.app --args -AppCommandLineArg';
-
+ipcMain.on('get ls result', function(event, arg) {
+  var cmd = 'ls';
   exec(cmd, function(error, stdout, stderr) {
-    console.log(error, stdout, stderr);
+    event.returnValue = stdout;
+    return;
   });
-
-  event.returnValue = 'success';
-  return;
 });
 
 function createWindow () {
@@ -95,8 +77,5 @@ app.on('activate', function () {
   if (mainWindow === null) {
     createWindow();
   }
-
-
-
 
 });
