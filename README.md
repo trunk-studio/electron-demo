@@ -102,14 +102,14 @@ npm run build
 
 ## 其他使用 Election 製作的 App
 
-* [atom 編輯器][https://atom.io/]
+* [atom 編輯器](https://atom.io/)
 
-Electron 為 GitHub 為了開發 Atom 編輯器所開發出來的。
+  Electron 為 GitHub 為了開發 Atom 編輯器所開發出來的。
 
 * [Nylas N1](https://nylas.com/)
 
-Email 管理軟體
+  Email 管理軟體
 
 * [Kitematic](https://kitematic.com/)
 
-Docker 管理工具
+  Docker 管理工具
