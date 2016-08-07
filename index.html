@@ -22,10 +22,9 @@
     const ipcRenderer = require('electron').ipcRenderer;
 
     function getFileSystemResilt(){
-      var result = ipcRenderer.sendSync('get ls result');
-      result = result.split(' ').join("<br>")
-      document.getElementById("result").innerHTML = result;
-      return;
+      // 練習：列出檔案系統
+      // var result = ipcRenderer.sendSync('get ls result');
+      // document.getElementById("result").innerHTML = result;
     }
 
   </script>
@@ -88,7 +87,7 @@
             </code>
           </pre>
 
-          <p><a class="btn btn-lg btn-success" onclick="getFileSystemResilt();" href="#" role="button">call teamViewer</a></p>
+          <p><a class="btn btn-lg btn-success" onclick="getFileSystemResilt();" href="#" role="button">get ls result</a></p>
         </div>
       </div>
       <!-- Site footer -->

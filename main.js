@@ -12,12 +12,12 @@ const BrowserWindow = electron.BrowserWindow;
 let mainWindow;
 const exec = require('child_process').exec;
 const ipcMain = require('electron').ipcMain;
+// 練習：列出檔案系統 - 宣告 ipc event
 ipcMain.on('get ls result', function(event, arg) {
-  var cmd = 'ls';
-  exec(cmd, function(error, stdout, stderr) {
-    event.returnValue = stdout;
-    return;
-  });
+  // var cmd = 'ls';
+  // exec(cmd, function(error, stdout, stderr) {
+  //   event.returnValue = stdout;
+  // });
 });
 
 function createWindow () {
