@@ -23,8 +23,8 @@
 
     function getFileSystemResilt(){
       // 練習：列出檔案系統
-      // var result = ipcRenderer.sendSync('get ls result');
-      // document.getElementById("result").innerHTML = result;
+      var result = ipcRenderer.sendSync('get ls result');
+      document.getElementById("result").innerHTML = result;
     }
 
   </script>

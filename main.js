@@ -12,30 +12,18 @@ const BrowserWindow = electron.BrowserWindow;
 let mainWindow;
 const exec = require('child_process').exec;
 const ipcMain = require('electron').ipcMain;
-// 練習：列出檔案系統 - 宣告 ipc event
+
 ipcMain.on('get ls result', function(event, arg) {
-  // var cmd = 'ls';
-  // exec(cmd, function(error, stdout, stderr) {
-  //   event.returnValue = stdout;
-  // });
+  // 練習：列出檔案系統 - 宣告 ipc event
+  var cmd = 'ls';
+  exec(cmd, function(error, stdout, stderr) {
+    event.returnValue = stdout;
+  });
 });
 
 function createWindow () {
   // Create the browser window.
   // you can use any webserver library/framework you like (connect, express, hapi, etc)
-  // var server = http.createServer(function(req, res) {
-  //   // You can respond with a status `500` if you want to indicate that something went wrong
-  //   res.writeHead(200, {'Content-Type': 'application/json'});
-  //   // data passed to `electronWorkers.execute` will be available in req body
-  //   res.end('Hello New York\n');
-  //   console.log(req);
-  //   req.pipe(res);
-  // });
-  //
-  // server.listen(port, host);
-  // console.log('=== server start ===');
-
-  // var cmd = 'open -n ./TeamViewerQS.app --args -AppCommandLineArg';
 
 
 
