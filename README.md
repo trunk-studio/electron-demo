@@ -88,17 +88,6 @@ npm run build
 
 ![](assets/README-39473.png)
 
-## 執行 file file-explorer
-
-在此專案根目錄執行：
-
-`electron file-explorer/`
-
-畫面如下：
-
-![](assets/README-f1ddd.png)
-
-除了基本的操作，也可以使用 Electron 建立如同 file explorer 的功能
 
 ## 其他使用 Election 製作的 App
 

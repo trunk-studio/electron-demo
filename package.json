@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "build": "node_modules/.bin/electron-packager . --all --overwrite"
+    "build": "node_modules/.bin/electron-packager . --all --overwrite",
+    "deploy": "make deploy"
   },
   "repository": {
     "type": "git",
