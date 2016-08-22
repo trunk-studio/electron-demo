@@ -16,7 +16,8 @@ const ipcMain = require('electron').ipcMain;
 ipcMain.on('get ls result', function(event, arg) {
   // 練習：列出檔案系統 - 宣告 ipc event
 
-  // var cmd = 'ls';
+  // var cmd = 'ls'; // linux
+  // if(process.platform = "win32") cmd = 'dir';
   // exec(cmd, function(error, stdout, stderr) {
   //   event.returnValue = stdout;
   // });
